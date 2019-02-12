@@ -149,7 +149,8 @@ endif
 "
 " Keywords
 "
-
+syn keyword pythonClassVar      self cls
+syn keyword pythonLogLevel      CRITICAL DEBUG
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass raise
