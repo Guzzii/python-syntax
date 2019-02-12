@@ -167,7 +167,12 @@ syn keyword pythonImport        import
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 
-syn match pythonStatement   "\<yield\>" display
+syn match pythonOperator   "\v\="
+syn match pythonOperator   "\v\!\="
+syn match pythonOperator   "\v\+\="
+syn match pythonOperator   "\v\-\="
+syn match pythonOperator   "\v\/\="
+syn match pythonOperator   "\<yield\>" display
 syn match pythonImport      "\<from\>" display
 
 if s:Python2Syntax()
