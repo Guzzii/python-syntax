@@ -182,7 +182,8 @@ if s:Python2Syntax()
   syn keyword pythonImport      as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
-  syn keyword pythonStatement   as nonlocal None
+  syn keyword pythonStatement   as nonlocal
+  syn keyword pythonFloat       None object
   syn match   pythonStatement   "\<yield\s\+from\>" display
   syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
@@ -192,16 +193,13 @@ else
   syn match   pythonStatement   "\<async\s\+for\>" display
 endif
 
+
 "
 " Decorators (new in Python 2.4)
 "
 
 syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
-if s:Python2Syntax()
-  syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
-else
-  syn match   pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
-endif
+syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
 syn match   pythonDot        "\." display containedin=pythonDottedName
 
 "
@@ -405,7 +403,7 @@ syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 if s:Enabled("g:python_highlight_builtin_objs")
   if s:Python2Syntax()
-    syn keyword pythonBuiltinObj	None
+    syn keyword pythonFloat	None
     syn keyword pythonBoolean		True False
   endif
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
@@ -435,7 +433,7 @@ if s:Enabled("g:python_highlight_builtin_funcs")
   syn keyword pythonBuiltinFunc	globals hasattr hash hex id
   syn keyword pythonBuiltinFunc	input int isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
-  syn keyword pythonBuiltinFunc	min next object oct open ord
+  syn keyword pythonBuiltinFunc	min next oct open ord
   syn keyword pythonBuiltinFunc	pow property range
   syn keyword pythonBuiltinFunc	repr reversed round set setattr
   syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
@@ -493,6 +491,17 @@ else
   syn sync maxlines=200
 endif
 
+" keywords
+" syn match pythonNestCall '[a-zA-Z0-9_.]*\i*(' contains=pythonFunctionCall,pythonModule,pythonModule2
+" syn match pythonModule '.[a-zA-Z0-9_]\i*.'
+
+syn match pythonFunctionCall '[a-zA-Z0-9_]\i*(' contains=pythonFunctionVariable
+syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator
+syn match pythonKeyword /\i*\ze=[^=]/ contained
+" syn match pythonEqual "=" contained
+" syn match pythonParenthesis /[(){}]/ containedin=pythonFunctionName
+
+
 if version >= 508 || !exists("did_python_syn_inits")
   if version <= 508
     let did_python_syn_inits = 1
@@ -501,6 +510,12 @@ if version >= 508 || !exists("did_python_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  HiLink pythonParenthesis      Normal
+  HiLink pythonEqual            Operator
+  HiLink pythonFunctionCall     Function
+  HiLink pythonKeyword          Number
+  HiLink pythonLogLevel         Identifier
+  HiLink pythonClassVar         Identifier
   HiLink pythonStatement        Statement
   HiLink pythonImport           Include
   HiLink pythonFunction         Function
@@ -512,6 +527,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
   HiLink pythonDot              Normal
+  HiLink pythonModule           Identifier
 
   HiLink pythonComment          Comment
   if !s:Enabled("g:python_highlight_file_headers_as_comments")
