@@ -497,7 +497,7 @@ endif
 syn match pythonModule '\.[a-zA-Z0-9_]\i*\.' contains=pythonDot
 
 syn match pythonFunctionCall '[a-zA-Z0-9_]\i*(' contains=pythonFunctionVariable
-syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator,pythonModule,pythonLogLevel
+syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator,pythonModule,pythonLogLevel,pythonConditional,pythonRepeat,pythonStatement,pythonBuiltinObj,pythonBuiltinFunc
 syn match pythonKeyword /\i*\ze=[^=]/ contained
 " syn match pythonEqual "=" contained
 " syn match pythonParenthesis /[(){}]/ containedin=pythonFunctionName
