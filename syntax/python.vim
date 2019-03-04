@@ -172,8 +172,16 @@ syn match pythonOperator   "\v\=\="
 syn match pythonOperator   "\v\!\="
 syn match pythonOperator   "\v\+\="
 syn match pythonOperator   "\v\-\="
+syn match pythonOperator   "\v\*\="
 syn match pythonOperator   "\v\/\="
 syn match pythonOperator   "\v\|\="
+syn match pythonOperator   "\v\&"
+syn match pythonOperator   "\v\|"
+syn match pythonOperator   "\v\+"
+syn match pythonOperator   "\v\-"
+syn match pythonOperator   "\v\*"
+syn match pythonOperator   "\v\/"
+syn match pythonOperator   "\v\~"
 syn match pythonOperator   "\<yield\>" display
 syn match pythonImport      "\<from\>" display
 
