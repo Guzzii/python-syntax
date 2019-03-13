@@ -168,15 +168,6 @@ syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 
 syn match pythonOperator   "\v\="
-syn match pythonOperator   "\v\=\="
-syn match pythonOperator   "\v\!\="
-syn match pythonOperator   "\v\+\="
-syn match pythonOperator   "\v\-\="
-syn match pythonOperator   "\v\*\="
-syn match pythonOperator   "\v\/\="
-syn match pythonOperator   "\v\|\="
-syn match pythonOperator   "\v\>\="
-syn match pythonOperator   "\v\<\="
 syn match pythonOperator   "\v\>"
 syn match pythonOperator   "\v\<"
 syn match pythonOperator   "\v\&"
@@ -186,6 +177,15 @@ syn match pythonOperator   "\v\-"
 syn match pythonOperator   "\v\*"
 syn match pythonOperator   "\v\/"
 syn match pythonOperator   "\v\~"
+syn match pythonOperator   "\v\=\="
+syn match pythonOperator   "\v\!\="
+syn match pythonOperator   "\v\+\="
+syn match pythonOperator   "\v\-\="
+syn match pythonOperator   "\v\*\="
+syn match pythonOperator   "\v\/\="
+syn match pythonOperator   "\v\|\="
+syn match pythonOperator   "\v\>\="
+syn match pythonOperator   "\v\<\="
 syn match pythonOperator   "\<yield\>" display
 syn match pythonImport      "\<from\>" display
 
