@@ -6,7 +6,7 @@ Python syntax highlighting script for Vim
 ScreenShot
 ----------
 
-Coupled with `onedark theme <https://github.com/joshdick/onedark.vim>` , this syntax hightlight reproduces 95% of what you get from Atom.
+Coupled with `onedark theme <https://github.com/joshdick/onedark.vim>`_ , this syntax hightlight reproduces 95% of what you get from Atom.
 
 .. image:: ScreenShot.png
 
