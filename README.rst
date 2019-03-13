@@ -6,7 +6,7 @@ Python syntax highlighting script for Vim
 ScreenShot
 ----------
 
-Coupled with onedark theme, this syntax reproduces 95% of what you get from Atom.
+Coupled with `onedark theme <https://github.com/joshdick/onedark.vim>`, this syntax hightlight reproduces 95% of what you get from Atom.
 
 .. image:: ScreenShot.png
 
@@ -18,19 +18,14 @@ Enhanced version of the original Python syntax highlighting script. Based on
 ca). Check also `python.vim page on vim.org
 <http://www.vim.org/scripts/script.php?script_id=790>`_.
 
-Please use the following channels for reporting bugs, offering suggestions or
-feedback:
-
-- python.vim issue tracker: https://github.com/hdima/python-syntax/issues
-- Email: Dmitry Vasiliev (dima at hlabs.org)
-- Send a message or follow me for updates on Twitter: `@hdima
-  <https://twitter.com/hdima>`__
-
 Features
 --------
 
 Changes from the original ``python.vim`` are:
 
+- Highlight function calls
+- Highlight keyword arguments in function definition and function calls
+- Highlight commone python operators like `>=`, `<=`, `|=`, etc
 - Added support for Python 3 syntax highlighting
 - Added ``:Python2Syntax`` and ``:Python3Syntax`` commands which allow to
   switch between Python 2 and Python 3 syntaxes respectively without
