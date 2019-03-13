@@ -8,7 +8,7 @@ ScreenShot
 
 Coupled with onedark theme, this syntax reproduces 95% of what you get from Atom.
 
-.. image::ScreenShot.png
+.. image:: ScreenShot.png
 
 About
 -----
