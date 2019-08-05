@@ -157,7 +157,8 @@ syn keyword pythonStatement     pass raise
 syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
-syn keyword pythonDefine        def class nextgroup=pythonFunction skipwhite
+syn keyword pythonDefine        def nextgroup=pythonFunction skipwhite
+syn keyword pythonDefine        class nextgroup=pythonClass skipwhite
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
@@ -195,12 +196,14 @@ if s:Python2Syntax()
   endif
   syn keyword pythonImport      as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
+  syn match   pythonClass    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
   syn keyword pythonStatement   as nonlocal
   syn keyword pythonFloat       None object
   syn match   pythonStatement   "\<yield\s\+from\>" display
   syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
+  syn match   pythonClass    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
   syn keyword pythonStatement   await
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   "\<async\s\+with\>" display
