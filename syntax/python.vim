@@ -510,7 +510,7 @@ endif
 
 " keywords
 " syn match pythonNestCall '[a-zA-Z0-9_.]*\i*(' contains=pythonFunctionCall,pythonModule,pythonModule2
-syn match pythonModule '\.*[a-zA-Z0-9_]\i*\.' contains=pythonDot
+syn match pythonModule '\.*[a-zA-Z_]\i*[a-zA-Z0-9_]\i*\.' contains=pythonDot
 
 syn match pythonFunctionCall '[a-zA-Z0-9_]\i*(' contains=pythonFunctionVariable
 syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator,pythonModule,pythonLogLevel,pythonConditional,pythonRepeat,pythonStatement,pythonBuiltinObj,pythonBuiltinFunc,pythonClassVar
