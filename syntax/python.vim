@@ -150,7 +150,7 @@ endif
 " Keywords
 "
 syn keyword pythonClassVar      self cls
-syn keyword pythonLogLevel      CRITICAL DEBUG
+syn keyword pythonLogLevel      CRITICAL DEBUG INFO WARN ERROR
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass raise
@@ -509,14 +509,13 @@ else
 endif
 
 " keywords
-" syn match pythonNestCall '[a-zA-Z0-9_.]*\i*(' contains=pythonFunctionCall,pythonModule,pythonModule2
 syn match pythonModule '\.*[a-zA-Z_]\i*[a-zA-Z0-9_]\i*\.' contains=pythonDot
+syn match pythonCappedVariable '\<[A-Z0-9_]\+\>'
 
 syn match pythonFunctionCall '[a-zA-Z0-9_]\i*(' contains=pythonFunctionVariable
-syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator,pythonModule,pythonLogLevel,pythonConditional,pythonRepeat,pythonStatement,pythonBuiltinObj,pythonBuiltinFunc,pythonClassVar
+syn region pythonFunctionVariable matchgroup=pythonParenthesis start='(' end=')' contains=pythonFunctionCall,pythonKeyword,pythonBoolean,pythonFloat,pythonNumber,pythonString,pythonOperator,pythonModule,pythonLogLevel,pythonConditional,pythonRepeat,pythonStatement,pythonBuiltinObj,pythonBuiltinFunc,pythonClassVar,pythonCappedVariable
 syn match pythonKeyword /\i*\ze=[^=]/ contained
 " syn match pythonEqual "=" contained
-" syn match pythonParenthesis /[(){}]/ containedin=pythonFunctionName
 
 
 if version >= 508 || !exists("did_python_syn_inits")
@@ -527,9 +526,9 @@ if version >= 508 || !exists("did_python_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink pythonParenthesis      Normal
   HiLink pythonEqual            Operator
   HiLink pythonFunctionCall     Function
+  HiLink pythonCappedVariable   Constant
   HiLink pythonKeyword          Number
   HiLink pythonLogLevel         Identifier
   HiLink pythonClassVar         Identifier
